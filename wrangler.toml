@@ -1,3 +1,10 @@
 name = "protocol-api"
 main = "src/index.ts"
 compatibility_date = "2023-01-15"
+
+kv_namespaces = [
+  { binding = "CC_API", id = "32bbc209e16546df91a4eb4e39dbd123", preview_id = "b742a47956d7476aacec3eb447f6110b" }
+]
+
+[site]
+bucket = './static'
