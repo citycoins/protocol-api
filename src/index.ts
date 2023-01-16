@@ -5,8 +5,6 @@ import {
   NotFoundError,
 } from "@cloudflare/kv-asset-handler";
 import { AssetManifestType } from "@cloudflare/kv-asset-handler/dist/types";
-import manifestJSON from "__STATIC_CONTENT_MANIFEST";
-const assetManifest = JSON.parse(manifestJSON);
 
 // `wrangler publish src/index.ts --name my-worker`
 
