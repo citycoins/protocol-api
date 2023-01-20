@@ -1,11 +1,13 @@
 import { Router } from 'itty-router';
+import GetStacksBlockHeight from '../../src/components/api-handlers/get-stacks-block-height';
 
-const router = Router();
+const router = Router({ base: '/api' });
 
-router.get('/api', () => new Response('api root'));
-router.get('/api/one', () => new Response('one'));
-router.get('/api/one/two', () => new Response('one two'));
-router.get('/api/one/two/three', () => new Response('one two three'));
+router.get('/', () => new Response('api root'));
+router.get('/one', () => new Response('one'));
+router.get('/one/two', () => new Response('one two'));
+router.get('/one/two/three', () => new Response('one two three'));
+router.get('/get-stacks-block-height', GetStacksBlockHeight);
 router.get('*', () => new Response(`Unknown path`));
 
 export async function onRequest(context): Promise<Response> {
