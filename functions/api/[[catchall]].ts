@@ -2,9 +2,11 @@ import { Router } from 'itty-router';
 
 const router = Router();
 
-// router.get('/', () => new Response('Hello API!'));
+router.get('/api/one', () => new Response('one'));
+router.get('/api/one/two', () => new Response('one two'));
+router.get('/api/one/two/three', () => new Response('one two three'));
+router.get('*', () => new Response(`Unknown path`));
 
 export async function onRequest(context): Promise<Response> {
-  console.log(`Hello API!`);
-  return new Response(JSON.stringify(context));
+  return await router.handle(context.request);
 }
