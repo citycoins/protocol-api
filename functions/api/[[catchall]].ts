@@ -2,6 +2,7 @@ import { Router } from 'itty-router';
 
 const router = Router();
 
+router.get('/api', () => new Response('api root'));
 router.get('/api/one', () => new Response('one'));
 router.get('/api/one/two', () => new Response('one two'));
 router.get('/api/one/two/three', () => new Response('one two three'));
