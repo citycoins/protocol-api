@@ -6,7 +6,8 @@ import { UserCard } from './components/user-card';
 
 function Contents() {
   return (
-    <>
+    <div>
+      <img src={ccLogo} alt="logo test" />
       <h1>micro-stacks + Vite + React</h1>
       <div className="card">
         <UserCard />
@@ -23,7 +24,8 @@ function Contents() {
       <p className="read-the-docs">
         Click on the micro-stacks, Vite, and React logos to learn more
       </p>
-    </>
+      <a href="openapi.yml" download >OpenAPI Docs?</a>
+    </div>
   );
 }
 
