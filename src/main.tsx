@@ -13,6 +13,19 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
+    path: '/tools',
+    element: <TestRoute />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+
+/*
+  {
     path: '/activation',
     element: <TestRoute />,
   },
@@ -28,14 +41,4 @@ const router = createBrowserRouter([
     path: '/stacking',
     element: <TestRoute />,
   },
-  {
-    path: '/tools',
-    element: <TestRoute />,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+  */
