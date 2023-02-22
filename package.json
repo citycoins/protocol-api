@@ -11,7 +11,6 @@
   "dependencies": {
     "@micro-stacks/client": "1.0.0",
     "@micro-stacks/react": "1.0.0",
-    "itty-router": "^3.0.11",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "micro-stacks": "^1.0.0",
@@ -30,13 +29,13 @@
     "vite": "^3.0.2"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 160,
     "trailingComma": "es5",
     "tabWidth": 2,
     "useTabs": false,
     "semi": true,
     "singleQuote": true,
     "singleAttributePerLine": true,
-    "arrowParens": "avoid"
+    "arrowParens": "always"
   }
 }

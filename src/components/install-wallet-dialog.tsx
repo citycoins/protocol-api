@@ -16,18 +16,13 @@ export const InstallWalletDialog = ({ isOpen, onClose }: InstallWalletDialogProp
   return (
     <dialog open>
       <h2>No wallet found!</h2>
-      <p>
-        You’ll need a wallet to use {appName ?? 'this app'}. A wallet gives you access Stacks apps,
-        your account, and your NFTs.
-      </p>
+      <p>You’ll need a wallet to use {appName ?? 'this app'}. A wallet gives you access Stacks apps, your account, and your NFTs.</p>
       <p>
         <a
           href={installUrl}
           target="_blank"
         >
-          {browser === 'Mobile'
-            ? 'Download Xverse, the mobile wallet for Stacks'
-            : `Install the Hiro Web Wallet, a web extension`}
+          {browser === 'Mobile' ? 'Download Xverse, the mobile wallet for Stacks' : `Install the Hiro Web Wallet, a web extension`}
         </a>
       </p>
       <form

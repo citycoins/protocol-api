@@ -6,6 +6,10 @@ To run locally:
 
 ```
 npm install
-npm build
+npm run build
 npx wrangler pages dev dist/
 ```
+
+Or as a one-liner:
+
+`npm run build && npx wrangler pages dev dist/`
