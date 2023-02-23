@@ -6,27 +6,27 @@ import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
-  const contractPrincipal = requestUrl.searchParams.get('proposal');
-  if (!contractPrincipal) return new Response('Missing proposal parameter', { status: 400 });
+  const proposal = requestUrl.searchParams.get('proposal');
+  if (!proposal) return new Response('Missing proposal parameter', { status: 400 });
   const who = requestUrl.searchParams.get('who');
   if (!who) return new Response('Missing who parameter', { status: 400 });
 
   // get result from contract
-  const signalled = await hasSignalled(contractPrincipal, who);
+  const signalled = await hasSignalled(proposal, who);
 
   // return result
   return new Response(JSON.stringify(signalled));
 }
 
 // returns if a given principal has signalled for a proposal
-async function hasSignalled(contractPrincipal: string, approver: string): Promise<boolean | undefined> {
+async function hasSignalled(proposal: string, who: string): Promise<boolean | undefined> {
   try {
     const result = await fetchReadOnlyFunction(
       {
         contractAddress: DEPLOYER('mainnet'),
         contractName: 'ccd001-direct-execute',
         functionName: 'has-signalled',
-        functionArgs: [principalCV(contractPrincipal), principalCV(approver)],
+        functionArgs: [principalCV(proposal), principalCV(who)],
         network: NETWORK('mainnet'),
       },
       true

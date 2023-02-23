@@ -17,14 +17,14 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns true or false if the principal is an approver
-async function isApprover(approver: string): Promise<boolean | undefined> {
+async function isApprover(who: string): Promise<boolean | undefined> {
   try {
     const result = await fetchReadOnlyFunction(
       {
         contractAddress: DEPLOYER('mainnet'),
         contractName: 'ccd001-direct-execute',
         functionName: 'is-approver',
-        functionArgs: [principalCV(approver)],
+        functionArgs: [principalCV(who)],
         network: NETWORK('mainnet'),
       },
       true
