@@ -1,15 +1,22 @@
-import { Router } from 'itty-router';
-import GetStacksBlockHeight from '../../src/components/api-handlers/get-stacks-block-height';
+export {};
 
-const router = Router({ base: '/api' });
+// TODO: upgrade types and check if EventContext is found
+export async function onRequest(context: any): Promise<Response> {
+  const requestUrl = new URL(context.request.url);
+  const requestPath = requestUrl.pathname;
+  const requestParams = Array.from(requestUrl.searchParams.entries());
 
-router.get('/', () => new Response('api root'));
-router.get('/one', () => new Response('one'));
-router.get('/one/two', () => new Response('one two'));
-router.get('/one/two/three', () => new Response('one two three'));
-router.get('/get-stacks-block-height', GetStacksBlockHeight);
-router.get('*', () => new Response(`Unknown path`));
-
-export async function onRequest(context): Promise<Response> {
-  return await router.handle(context.request);
+  return new Response(
+    JSON.stringify(
+      {
+        catchall: true,
+        functionPath: context.functionPath,
+        requestPath: requestPath,
+        requestParams: requestParams,
+      },
+      null,
+      2
+    ),
+    { status: 404 }
+  );
 }

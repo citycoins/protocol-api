@@ -56,9 +56,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/format'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /stacks/get-bns-name/{address}:
@@ -71,11 +71,11 @@ paths:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /stacks/get-stx-balance/{address}:
@@ -88,11 +88,11 @@ paths:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /stacks/get-date-at-block/{blockheight}:
@@ -105,11 +105,11 @@ paths:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/blockheight'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/activation/get-activation-block:
@@ -123,11 +123,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/activation/get-activation-status:
@@ -141,11 +141,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/activation/get-activation-target:
@@ -159,11 +159,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/activation/get-city-wallet:
@@ -177,13 +177,13 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
-  
+
   /{version}/{cityname}/activation/get-registered-users-nonce:
     get:
       summary: Get Registered Users
@@ -195,11 +195,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/activation/get-user/{userid}:
@@ -214,11 +214,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/userid'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/activation/get-user-id/{address}:
@@ -233,11 +233,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining/get-block-winner-id/{blockheight}:
@@ -252,11 +252,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/blockheight'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining/get-mining-stats-at-block/{blockheight}/{default}:
@@ -271,7 +271,7 @@ paths:
         - $ref: '#/components/parameters/blockheight'
         - $ref: '#/components/parameters/default'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -289,16 +289,16 @@ paths:
                   rewardClaimed:
                     type: boolean
               examples:
-                "0":
-                  value: 
-                    amount: "253600601"
-                    amountToCity: "76080180"
-                    amountToStackers: "177520421"
-                    minersCount: "6"
+                '0':
+                  value:
+                    amount: '253600601'
+                    amountToCity: '76080180'
+                    amountToStackers: '177520421'
+                    minersCount: '6'
                     rewardClaimed: true
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining/get-miner-at-block/{blockheight}/{userid}/{default}:
@@ -314,7 +314,7 @@ paths:
         - $ref: '#/components/parameters/userid'
         - $ref: '#/components/parameters/default'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -330,15 +330,15 @@ paths:
                   winner:
                     type: boolean
               examples:
-                "0":
+                '0':
                   value:
-                    lowValue: "1000001"
-                    highValue: "41000000"
-                    ustx: "40000000"
+                    lowValue: '1000001'
+                    highValue: '41000000'
+                    ustx: '40000000'
                     winner: true
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining/get-last-high-value-at-block//{blockheight}:
@@ -353,11 +353,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/blockheight'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining/has-mined-at-block/{blockheight}/{userid}:
@@ -373,11 +373,11 @@ paths:
         - $ref: '#/components/parameters/blockheight'
         - $ref: '#/components/parameters/userid'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining-claims/can-claim-mining-reward/{blockheight}/{address}:
@@ -393,11 +393,11 @@ paths:
         - $ref: '#/components/parameters/blockheight'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/mining-claims/is-block-winner/{blockheight}/{address}:
@@ -413,11 +413,11 @@ paths:
         - $ref: '#/components/parameters/blockheight'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/stacking/get-stacking-stats-at-cycle/{cycleid}/{default}:
@@ -432,7 +432,7 @@ paths:
         - $ref: '#/components/parameters/cycleid'
         - $ref: '#/components/parameters/default'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -444,13 +444,13 @@ paths:
                   amountUstx:
                     type: string
               examples:
-                "0":
+                '0':
                   value:
-                    amountToken: "1281126283"
-                    amountUstx: "6617244628227"
-        "400":
+                    amountToken: '1281126283'
+                    amountUstx: '6617244628227'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/stacking/get-stacker-at-cycle/{cycleid}/{userid}/{default}:
@@ -466,7 +466,7 @@ paths:
         - $ref: '#/components/parameters/userid'
         - $ref: '#/components/parameters/default'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -478,13 +478,13 @@ paths:
                   toReturn:
                     type: string
               examples:
-                "0":
-                  value: 
-                    amountStacked: "0"
-                    toReturn: "0"
-        "400":
+                '0':
+                  value:
+                    amountStacked: '0'
+                    toReturn: '0'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/stacking/get-reward-cycle/{blockheight}:
@@ -499,11 +499,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/blockheight'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/stacking/get-first-stacks-block-in-reward-cycle/{cycleid}:
@@ -518,11 +518,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/cycleid'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/stacking/stacking-active-at-cycle/{cycleid}:
@@ -537,11 +537,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/cycleid'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/stacking-claims/get-stacking-reward/{cycleid}/{userid}:
@@ -561,11 +561,11 @@ paths:
         - $ref: '#/components/parameters/cycleid'
         - $ref: '#/components/parameters/userid'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-coinbase-amount/{blockheight}:
@@ -580,11 +580,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/blockheight'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-coinbase-amounts:
@@ -597,7 +597,7 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -619,18 +619,18 @@ paths:
                   coinbaseAmountDefault:
                     type: string
               examples:
-                "0":
-                  value: 
-                    coinbaseAmount1: "100000000000"
-                    coinbaseAmount2: "50000000000"
-                    coinbaseAmount3: "25000000000"
-                    coinbaseAmount4: "12500000000"
-                    coinbaseAmount5: "6250000000"
-                    coinbaseAmountBonus: "250000000000"
-                    coinbaseAmountDefault: "3125000000"
-        "400":
+                '0':
+                  value:
+                    coinbaseAmount1: '100000000000'
+                    coinbaseAmount2: '50000000000'
+                    coinbaseAmount3: '25000000000'
+                    coinbaseAmount4: '12500000000'
+                    coinbaseAmount5: '6250000000'
+                    coinbaseAmountBonus: '250000000000'
+                    coinbaseAmountDefault: '3125000000'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-coinbase-thresholds:
@@ -644,7 +644,7 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/blockheight'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -662,16 +662,16 @@ paths:
                   coinbaseThreshold5:
                     type: string
               examples:
-                "0":
-                  value: 
-                    coinbaseThreshold1: "59497"
-                    coinbaseThreshold2: "109497"
-                    coinbaseThreshold3: "209497"
-                    coinbaseThreshold4: "409497"
-                    coinbaseThreshold5: "809497"
-        "400":
+                '0':
+                  value:
+                    coinbaseThreshold1: '59497'
+                    coinbaseThreshold2: '109497'
+                    coinbaseThreshold3: '209497'
+                    coinbaseThreshold4: '409497'
+                    coinbaseThreshold5: '809497'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-name:
@@ -684,11 +684,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{versions}/{cityname}/token/get-symbol:
@@ -702,11 +702,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-decimals:
@@ -720,11 +720,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-balance/{address}:
@@ -739,11 +739,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-total-supply:
@@ -757,11 +757,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonNumber'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{cityname}/token/get-total-supply:
@@ -777,11 +777,11 @@ paths:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /token/get-total-supply/{cityname}:
@@ -800,11 +800,11 @@ paths:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{cityname}/token/get-circulating-supply:
@@ -820,11 +820,11 @@ paths:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-token-uri:
@@ -838,11 +838,11 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonString'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/token/get-token-uri-json:
@@ -855,7 +855,7 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -869,14 +869,14 @@ paths:
                   description:
                     type: string
               examples:
-                "0":
-                  value: 
-                    name: "MiamiCoin"
-                    description: "A CityCoin for Miami, ticker is MIA, Stack it to earn Stacks (STX)"
-                    image: "https://cdn.citycoins.co/logos/miamicoin.png"
-        "400":
+                '0':
+                  value:
+                    name: 'MiamiCoin'
+                    description: 'A CityCoin for Miami, ticker is MIA, Stack it to earn Stacks (STX)'
+                    image: 'https://cdn.citycoins.co/logos/miamicoin.png'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /tools/get-city-list:
@@ -886,18 +886,18 @@ paths:
       tags:
         - Tools
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/citylist'
               examples:
-                "0":
-                  value: ["mia", "nyc"]
-        "400":
+                '0':
+                  value: ['mia', 'nyc']
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{cityname}/tools/get-city-info:
@@ -909,22 +909,22 @@ paths:
       parameters:
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/cityinfo'
               examples:
-                "0":
+                '0':
                   value:
-                    fullName: "Miami"
-                    logo: "https://cdn.citycoins.co/brand/MIA_Miami/Coins/SVG/MiamiCoin_StandAlone_Coin.svg"
-                    versions: ["v1", "v2"]
-                    currentVersion: "v2"
-        "400":
+                    fullName: 'Miami'
+                    logo: 'https://cdn.citycoins.co/brand/MIA_Miami/Coins/SVG/MiamiCoin_StandAlone_Coin.svg'
+                    versions: ['v1', 'v2']
+                    currentVersion: 'v2'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /tools/get-full-city-info:
@@ -934,30 +934,30 @@ paths:
       tags:
         - Tools
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/cityinfolist'
               examples:
-                "0":
+                '0':
                   value:
-                    "mia":
-                      fullName: "Miami"
-                      logo: "https://cdn.citycoins.co/brand/MIA_Miami/Coins/SVG/MiamiCoin_StandAlone_Coin.svg"
-                      versions: ["v1", "v2"]
-                      currentVersion: "v2"
-                    "nyc":
-                      fullName: "New York City"
-                      logo: "https://cdn.citycoins.co/brand/NYC_NewYorkCity/Coins/SVG/CC_NYCCoin_StandAloneCoin.svg"
-                      versions: ["v1", "v2"]
-                      currentVersion: "v2"
-        "400":
+                    'mia':
+                      fullName: 'Miami'
+                      logo: 'https://cdn.citycoins.co/brand/MIA_Miami/Coins/SVG/MiamiCoin_StandAlone_Coin.svg'
+                      versions: ['v1', 'v2']
+                      currentVersion: 'v2'
+                    'nyc':
+                      fullName: 'New York City'
+                      logo: 'https://cdn.citycoins.co/brand/NYC_NewYorkCity/Coins/SVG/CC_NYCCoin_StandAloneCoin.svg'
+                      versions: ['v1', 'v2']
+                      currentVersion: 'v2'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
-                
+
   /{version}/{cityname}/tools/get-city-configuration:
     get:
       summary: Get City Configuration
@@ -968,7 +968,7 @@ paths:
         - $ref: '#/components/parameters/version'
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -977,33 +977,33 @@ paths:
                 items:
                   $ref: '#/components/schemas/cityconfig'
               examples:
-                "0":
+                '0':
                   value:
-                    cityName: "Miami"
+                    cityName: 'Miami'
                     deployed: true
-                    deployer: "SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27"
+                    deployer: 'SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27'
                     auth:
-                      name: "miamicoin-auth"
+                      name: 'miamicoin-auth'
                       initialized: true
                     core:
-                      name: "miamicoin-core-v1"
+                      name: 'miamicoin-core-v1'
                       activated: false
                       startBlock: 24497
                       shutdown: true
                       shutdownBlock: 58917
                     token:
-                      name: "miamicoin-token"
+                      name: 'miamicoin-token'
                       activated: true
                       activationBlock: 24497
-                      displayName: "MiamiCoin"
-                      tokenName: "miamicoin"
-                      symbol: "MIA"
+                      displayName: 'MiamiCoin'
+                      tokenName: 'miamicoin'
+                      symbol: 'MIA'
                       decimals: 0
-                      logo: "https://cdn.citycoins.co/logos/miamicoin.png"
-                      uri: "https://cdn.citycoins.co/metadata/miamicoin.json"
-        "400":
+                      logo: 'https://cdn.citycoins.co/logos/miamicoin.png'
+                      uri: 'https://cdn.citycoins.co/metadata/miamicoin.json'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{cityname}/tools/get-full-city-configuration:
@@ -1015,7 +1015,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/cityname'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -1027,56 +1027,56 @@ paths:
                 additionalProperties:
                   $ref: '#/components/schemas/cityconfig'
               examples:
-                "0":
+                '0':
                   value:
-                    "v1":
-                      cityName: "Miami"
+                    'v1':
+                      cityName: 'Miami'
                       deployed: true
-                      deployer: "SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27"
+                      deployer: 'SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27'
                       auth:
-                        name: "miamicoin-auth"
+                        name: 'miamicoin-auth'
                         initialized: true
                       core:
-                        name: "miamicoin-core-v1"
+                        name: 'miamicoin-core-v1'
                         activated: false
                         startBlock: 24497
                         shutdown: true
                         shutdownBlock: 58917
                       token:
-                        name: "miamicoin-token"
+                        name: 'miamicoin-token'
                         activated: true
                         activationBlock: 24497
-                        displayName: "MiamiCoin"
-                        tokenName: "miamicoin"
-                        symbol: "MIA"
+                        displayName: 'MiamiCoin'
+                        tokenName: 'miamicoin'
+                        symbol: 'MIA'
                         decimals: 0
-                        logo: "https://cdn.citycoins.co/logos/miamicoin.png"
-                        uri: "https://cdn.citycoins.co/metadata/miamicoin.json"
-                    "v2":
-                      cityName: "Miami"
+                        logo: 'https://cdn.citycoins.co/logos/miamicoin.png'
+                        uri: 'https://cdn.citycoins.co/metadata/miamicoin.json'
+                    'v2':
+                      cityName: 'Miami'
                       deployed: true
-                      deployer: "SP1H1733V5MZ3SZ9XRW9FKYGEZT0JDGEB8Y634C7R"
+                      deployer: 'SP1H1733V5MZ3SZ9XRW9FKYGEZT0JDGEB8Y634C7R'
                       auth:
-                        name: "miamicoin-auth-v2"
+                        name: 'miamicoin-auth-v2'
                         initialized: true
                       core:
-                        name: "miamicoin-core-v2"
+                        name: 'miamicoin-core-v2'
                         activated: false
                         startBlock: 58921
                         shutdown: false
                       token:
-                        name: "miamicoin-token-v2"
+                        name: 'miamicoin-token-v2'
                         activated: true
                         activationBlock: 24497
-                        displayName: "MiamiCoin"
-                        tokenName: "miamicoin"
-                        symbol: "MIA"
+                        displayName: 'MiamiCoin'
+                        tokenName: 'miamicoin'
+                        symbol: 'MIA'
                         decimals: 6
-                        logo: "https://cdn.citycoins.co/logos/miamicoin.png"
-                        uri: "https://cdn.citycoins.co/metadata/miamicoin.json"
-        "400":
+                        logo: 'https://cdn.citycoins.co/logos/miamicoin.png'
+                        uri: 'https://cdn.citycoins.co/metadata/miamicoin.json'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/tools/get-prices/{currency}:
@@ -1093,7 +1093,7 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/currency'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
@@ -1103,12 +1103,12 @@ paths:
                   coingecko:
                     type: number
               examples:
-                "0":
+                '0':
                   value:
-                    coingecko: "0.1234"
-        "400":
+                    coingecko: '0.1234'
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
   /{version}/{cityname}/tools/proof-of-hodl/{address}:
@@ -1123,11 +1123,11 @@ paths:
         - $ref: '#/components/parameters/cityname'
         - $ref: '#/components/parameters/address'
       responses:
-        "200":
+        '200':
           $ref: '#/components/responses/200SuccessJsonBoolean'
-        "400":
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        "404":
+        '404':
           $ref: '#/components/responses/404NotFound'
 
 components:
@@ -1135,7 +1135,7 @@ components:
   # Reusable operation parameters
   #-------------------------------
   parameters:
-    address: 
+    address:
       in: path
       name: address
       required: true
@@ -1193,14 +1193,14 @@ components:
       required: true
       schema:
         type: string
-        enum: ["true", "false"]
+        enum: ['true', 'false']
       description: (Optional) Toggle calling the `or-default` version of the function which returns an empty value instead of an error. Defaults to `false`.
     format:
       in: query
       name: format
       schema:
         type: string
-        enum: ["json", "raw", "number", "string", "boolean"]
+        enum: ['json', 'raw', 'number', 'string', 'boolean']
       description: (Optional) The output format for the response. Defaults to `json`.
   # Reusable objects
   schemas:

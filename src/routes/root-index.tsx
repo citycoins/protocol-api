@@ -1,38 +1,42 @@
+import { Link, useLocation } from 'react-router-dom';
 import { UserCard } from '../components/user-card';
 import { WalletConnectButton } from '../components/wallet-connect-button';
-import ccLogo from '../assets/citycoins.png';
 import Navigation from './root-navigation';
 
 export default function RootIndex() {
+  const location = useLocation();
+
   return (
     <div>
       <img
-        src={ccLogo}
-        alt="logo test"
+        src="/citycoins-api-logo.png"
+        alt="CityCoins API Logo"
       />
-      <h1>micro-stacks + Vite + React</h1>
+      <h1>CityCoins Protocol API</h1>
+      <p>Current location: {location.pathname}</p>
+      <Navigation />
       <div className="card">
         <UserCard />
         <WalletConnectButton />
-        <p
-          style={{
-            display: 'block',
-            marginTop: '40px',
-          }}
-        >
-          Edit <code>src/app.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the micro-stacks, Vite, and React logos to learn more
+      <p>
+        Powered by{' '}
+        <Link
+          to="https://micro-stacks.dev"
+          target="_blank"
+          rel="noreferrer nofollower"
+        >
+          micro-stacks
+        </Link>{' '}
+        and{' '}
+        <Link
+          to="https://pages.cloudflare.com/"
+          target="_blank"
+          rel="noreferrer nofollower"
+        >
+          Cloudflare Pages
+        </Link>
       </p>
-      <a
-        href="openapi.yml"
-        download
-      >
-        OpenAPI Docs?
-      </a>
-      <Navigation />
     </div>
   );
 }
