@@ -29,8 +29,8 @@ async function getTreasuryNonce(cityId: string) {
       },
       true
     );
-    result === 0 ? undefined : Number(result);
+    result === 0 ? null : Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

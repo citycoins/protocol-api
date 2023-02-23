@@ -36,6 +36,6 @@ async function getMiner(cityId: string, height: string, userId: string) {
     );
     return result as Miner;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

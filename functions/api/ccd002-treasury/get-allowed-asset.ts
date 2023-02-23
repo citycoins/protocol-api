@@ -14,7 +14,7 @@ export async function onRequest(context: any): Promise<Response> {
   // get result from contract
   const allowed = await getAllowedAsset(contractName, assetContract);
   // return result
-  if (allowed === undefined) return new Response(`Asset status not found: ${contractName} ${assetContract}`, { status: 404 });
+  if (allowed === null) return new Response(`Asset status not found: ${contractName} ${assetContract}`, { status: 404 });
   return new Response(JSON.stringify(allowed));
 }
 
@@ -33,6 +33,6 @@ async function getAllowedAsset(contractName: string, assetContract: string) {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

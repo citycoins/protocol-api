@@ -17,7 +17,7 @@ export async function onRequest(context: any): Promise<Response> {
   const hasMined = await hasMinedAtBlock(cityId, height, userId);
 
   // return result
-  if (hasMined === undefined) return new Response(`Miner not found: ${cityId} ${height} ${userId}`, { status: 404 });
+  if (hasMined === null) return new Response(`Miner not found: ${cityId} ${height} ${userId}`, { status: 404 });
   return new Response(JSON.stringify(hasMined));
 }
 
@@ -36,6 +36,6 @@ async function hasMinedAtBlock(cityId: string, height: string, userId: string) {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

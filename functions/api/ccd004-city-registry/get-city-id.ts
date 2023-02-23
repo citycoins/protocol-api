@@ -29,8 +29,8 @@ async function getCityId(cityName: string) {
       },
       true
     );
-    return result ? Number(result) : undefined;
+    return result ? Number(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

@@ -32,6 +32,6 @@ async function getFirstBlockInRewardCycle(cycle: string) {
     );
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

@@ -7,7 +7,7 @@ export async function onRequest(context: any): Promise<Response> {
   const stackingEnabled = await isStackingEnabled();
 
   // return result
-  if (stackingEnabled === undefined) return new Response(`Stacking status not found`, { status: 404 });
+  if (stackingEnabled === null) return new Response(`Stacking status not found`, { status: 404 });
   return new Response(JSON.stringify(stackingEnabled));
 }
 
@@ -26,6 +26,6 @@ async function isStackingEnabled() {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

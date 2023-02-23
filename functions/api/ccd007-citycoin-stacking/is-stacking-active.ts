@@ -16,7 +16,7 @@ export async function onRequest(context: any): Promise<Response> {
   const active = await isStackingActive(cityId, cycle);
 
   // return result
-  if (active === undefined) return new Response(`Stacking status not found: ${cityId} ${cycle}`, { status: 404 });
+  if (active === null) return new Response(`Stacking status not found: ${cityId} ${cycle}`, { status: 404 });
   return new Response(JSON.stringify(active));
 }
 
@@ -35,6 +35,6 @@ async function isStackingActive(cityId: string, cycle: string) {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

@@ -26,6 +26,6 @@ async function getSignalsRequired() {
     );
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

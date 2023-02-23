@@ -32,6 +32,6 @@ async function getCoinbaseInfo(cityId: string) {
     );
     return result as GetCoinbaseInfo;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

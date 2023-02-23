@@ -36,6 +36,6 @@ async function isBlockWinner(cityId: string, user: string, claimHeight: string) 
     );
     return result as BlockWinner;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

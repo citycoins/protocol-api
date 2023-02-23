@@ -12,7 +12,7 @@ export async function onRequest(context: any): Promise<Response> {
   const activated = await isCityActivated(cityId);
 
   // return result
-  if (activated === undefined) return new Response(`City not found: ${cityId}`, { status: 404 });
+  if (activated === null) return new Response(`City not found: ${cityId}`, { status: 404 });
   return new Response(JSON.stringify(activated));
 }
 
@@ -30,6 +30,6 @@ async function isCityActivated(cityId: string) {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

@@ -29,8 +29,8 @@ async function getUserId(user: string) {
       },
       true
     );
-    return result ? Number(result) : undefined;
+    return result ? Number(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

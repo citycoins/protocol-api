@@ -13,7 +13,7 @@ export async function onRequest(context: any): Promise<Response> {
   const balance = await getBalanceStx(contractName);
 
   // return result
-  if (balance === undefined) return new Response(`Balance not found: ${contractName}`, { status: 404 });
+  if (balance === null) return new Response(`Balance not found: ${contractName}`, { status: 404 });
   return new Response(JSON.stringify(balance));
 }
 
@@ -33,6 +33,6 @@ async function getBalanceStx(contractName: string) {
     console.log(`result: ${result}`);
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

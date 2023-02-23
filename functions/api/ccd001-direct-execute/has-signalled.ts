@@ -15,7 +15,7 @@ export async function onRequest(context: any): Promise<Response> {
   const signalled = await hasSignalled(proposal, who);
 
   // return result
-  if (signalled === undefined) return new Response(`Proposal not found: ${proposal}`, { status: 404 });
+  if (signalled === null) return new Response(`Proposal not found: ${proposal}`, { status: 404 });
   return new Response(JSON.stringify(signalled));
 }
 
@@ -34,6 +34,6 @@ async function hasSignalled(proposal: string, who: string) {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

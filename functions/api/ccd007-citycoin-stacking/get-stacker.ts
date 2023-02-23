@@ -36,6 +36,6 @@ async function getStacker(cityId: string, cycle: string, userId: string) {
     );
     return result as Stacker;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

@@ -32,6 +32,6 @@ async function getActivationDetails(cityId: string) {
     );
     return result as ActivationDetails;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

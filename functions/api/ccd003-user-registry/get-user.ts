@@ -29,8 +29,8 @@ async function getUser(userId: string) {
       },
       true
     );
-    return result ? String(result) : undefined;
+    return result ? String(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

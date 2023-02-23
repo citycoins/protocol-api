@@ -32,8 +32,8 @@ async function getTreasuryAddress(cityId: string, treasuryId: string) {
       },
       true
     );
-    return result ? Number(result) : undefined;
+    return result ? Number(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

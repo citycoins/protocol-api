@@ -34,6 +34,6 @@ async function getCityInfo(cityId: string, treasuryName: string) {
     );
     return result as GetCityInfo;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }
