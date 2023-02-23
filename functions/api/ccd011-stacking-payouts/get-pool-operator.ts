@@ -7,13 +7,8 @@ export async function onRequest(context: any): Promise<Response> {
   const poolOperator = await getPoolOperator();
 
   // return result
-<<<<<<< HEAD
-  if (!poolOperator) return new Response(`Pool operator not found`, { status: 404 });
-  return new Response(poolOperator);
-=======
   if (!poolOperator) return createResponse(`Pool operator not found`, 404);
   return createResponse(poolOperator);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns the pool operator

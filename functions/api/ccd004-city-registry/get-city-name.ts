@@ -13,13 +13,8 @@ export async function onRequest(context: any): Promise<Response> {
   const cityName = await getCityName(cityId);
 
   // return result
-<<<<<<< HEAD
-  if (!cityName) return new Response(`City name not found: ${cityId}`, { status: 404 });
-  return new Response(cityName);
-=======
   if (!cityName) return createResponse(`City name not found: ${cityId}`, 404);
   return createResponse(cityName);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 async function getCityName(cityId: string) {

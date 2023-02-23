@@ -16,13 +16,8 @@ export async function onRequest(context: any): Promise<Response> {
   const active = await isStackingActive(cityId, cycle);
 
   // return result
-<<<<<<< HEAD
-  if (active === null) return new Response(`Stacking status not found: ${cityId} ${cycle}`, { status: 404 });
-  return new Response(JSON.stringify(active));
-=======
-  if (active === undefined) return createResponse(`Stacking status not found: ${cityId} ${cycle}`, 404);
+  if (active === null) return createResponse(`Stacking status not found: ${cityId} ${cycle}`, 404);
   return createResponse(active);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns true if the cycle is active

@@ -13,13 +13,8 @@ export async function onRequest(context: any): Promise<Response> {
   const balance = await getBalanceStx(contractName);
 
   // return result
-<<<<<<< HEAD
-  if (balance === null) return new Response(`Balance not found: ${contractName}`, { status: 404 });
-  return new Response(JSON.stringify(balance));
-=======
-  if (balance === undefined) return createResponse(`Balance not found: ${contractName}`, 404);
+  if (balance === null) return createResponse(`Balance not found: ${contractName}`, 404);
   return createResponse(balance);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns the balance of the treasury contract

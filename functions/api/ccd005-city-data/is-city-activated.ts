@@ -12,13 +12,8 @@ export async function onRequest(context: any): Promise<Response> {
   const activated = await isCityActivated(cityId);
 
   // return result
-<<<<<<< HEAD
-  if (activated === null) return new Response(`City not found: ${cityId}`, { status: 404 });
-  return new Response(JSON.stringify(activated));
-=======
-  if (activated === undefined) return createResponse(`City activation status not found: ${cityId}`, 404);
+  if (activated === null) return createResponse(`City activation status not found: ${cityId}`, 404);
   return createResponse(activated);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 async function isCityActivated(cityId: string) {

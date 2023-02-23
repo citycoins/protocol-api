@@ -17,13 +17,8 @@ export async function onRequest(context: any): Promise<Response> {
   const hasMined = await hasMinedAtBlock(cityId, height, userId);
 
   // return result
-<<<<<<< HEAD
-  if (hasMined === null) return new Response(`Miner not found: ${cityId} ${height} ${userId}`, { status: 404 });
-  return new Response(JSON.stringify(hasMined));
-=======
-  if (hasMined === undefined) return createResponse(`Miner not found: ${cityId} ${height} ${userId}`, 404);
+  if (hasMined === null) return createResponse(`Miner not found: ${cityId} ${height} ${userId}`, 404);
   return createResponse(hasMined);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns true if the given user mined at the given block height

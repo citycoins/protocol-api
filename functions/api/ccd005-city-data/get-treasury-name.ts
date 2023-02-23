@@ -15,13 +15,8 @@ export async function onRequest(context: any): Promise<Response> {
   const treasuryName = await getTreasuryName(cityId, treasuryId);
 
   // return result
-<<<<<<< HEAD
-  if (!treasuryName) return new Response(`Treasury name not found: ${cityId} ${treasuryId}`, { status: 404 });
-  return new Response(treasuryName);
-=======
   if (!treasuryName) return createResponse(`Treasury name not found: ${cityId} ${treasuryId}`, 404);
-  return createResponse('Not implemented, coming soon!', 501);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
+  return createResponse(treasuryName);
 }
 
 async function getTreasuryName(cityId: string, treasuryId: string) {

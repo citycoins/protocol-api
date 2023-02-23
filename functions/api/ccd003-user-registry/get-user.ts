@@ -13,13 +13,8 @@ export async function onRequest(context: any): Promise<Response> {
   const user = await getUser(userId);
 
   // return result
-<<<<<<< HEAD
-  if (!user) return new Response(`User not found: ${userId}`, { status: 404 });
-  return new Response(user);
-=======
   if (!user) return createResponse(`User not found: ${userId}`, 404);
   return createResponse(user);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 async function getUser(userId: string) {

@@ -15,13 +15,8 @@ export async function onRequest(context: any): Promise<Response> {
   const treasuryAddress = await getTreasuryByName(Number(cityId), treasuryName);
 
   // return result
-<<<<<<< HEAD
-  if (!treasuryAddress) return new Response(`Treasury address not found: ${cityId} ${treasuryName}`, { status: 404 });
-  return new Response(treasuryAddress);
-=======
   if (!treasuryAddress) return createResponse(`Treasury address not found: ${cityId} ${treasuryName}`, 404);
   return createResponse(treasuryAddress);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns the treasury address for a given city ID and treasury name

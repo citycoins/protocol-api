@@ -14,13 +14,8 @@ export async function onRequest(context: any): Promise<Response> {
   // get result from contract
   const allowed = await getAllowedAsset(contractName, assetContract);
   // return result
-<<<<<<< HEAD
-  if (allowed === null) return new Response(`Asset status not found: ${contractName} ${assetContract}`, { status: 404 });
-  return new Response(JSON.stringify(allowed));
-=======
-  if (allowed === undefined) return createResponse(`Asset status not found: ${contractName} ${assetContract}`, 404);
+  if (allowed === null) return createResponse(`Asset status not found: ${contractName} ${assetContract}`, 404);
   return createResponse(allowed);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns true if the asset is allowed in the given treasury contract

@@ -15,13 +15,8 @@ export async function onRequest(context: any): Promise<Response> {
   const paid = await isCyclePaid(cityId, cycle);
 
   // return result
-<<<<<<< HEAD
-  if (paid === null) return new Response(`Cycle payout information not found: ${cityId} ${cycle}`, { status: 404 });
-  return new Response(JSON.stringify(paid));
-=======
-  if (paid === undefined) return createResponse(`Cycle payout information not found: ${cityId} ${cycle}`, 404);
+  if (paid === null) return createResponse(`Cycle payout information not found: ${cityId} ${cycle}`, 404);
   return createResponse(paid);
->>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns true if the cycle is paid
