@@ -16,6 +16,7 @@ export async function onRequest(context: any): Promise<Response> {
       },
       null,
       2
-    )
+    ),
+    { status: 404 }
   );
 }
