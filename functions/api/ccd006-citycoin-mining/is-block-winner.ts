@@ -7,18 +7,18 @@ export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const cityId = requestUrl.searchParams.get('cityId');
-  if (!cityId) return new Response('Missing cityId parameter', { status: 400 });
+  if (!cityId) return createResponse('Missing cityId parameter', 400);
   const user = requestUrl.searchParams.get('user');
-  if (!user) return new Response('Missing user parameter', { status: 400 });
+  if (!user) return createResponse('Missing user parameter', 400);
   const claimHeight = requestUrl.searchParams.get('claimHeight');
-  if (!claimHeight) return new Response('Missing claimHeight parameter', { status: 400 });
+  if (!claimHeight) return createResponse('Missing claimHeight parameter', 400);
 
   // get result from contract
   const winner = await isBlockWinner(cityId, user, claimHeight);
 
   // return result
-  if (!winner) return new Response(`Block winner not found: ${cityId} ${user} ${claimHeight}`, { status: 404 });
-  return new Response(JSON.stringify(winner));
+  if (!winner) return createResponse(`Block winner not found: ${cityId} ${user} ${claimHeight}`, 404);
+  return createResponse(winner);
 }
 
 // returns true if the given user mined at the given block height

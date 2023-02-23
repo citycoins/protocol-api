@@ -1,19 +1,24 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const cityId = requestUrl.searchParams.get('cityId');
-  if (!cityId) return new Response('Missing cityId parameter', { status: 400 });
+  if (!cityId) return createResponse('Missing cityId parameter', 400);
 
   // get result from contract
   const activated = await isCityActivated(cityId);
 
   // return result
+<<<<<<< HEAD
   if (activated === null) return new Response(`City not found: ${cityId}`, { status: 404 });
   return new Response(JSON.stringify(activated));
+=======
+  if (activated === undefined) return createResponse(`City activation status not found: ${cityId}`, 404);
+  return createResponse(activated);
+>>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 async function isCityActivated(cityId: string) {

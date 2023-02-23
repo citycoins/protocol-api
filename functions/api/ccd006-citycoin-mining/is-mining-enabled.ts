@@ -1,5 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -7,8 +7,13 @@ export async function onRequest(context: any): Promise<Response> {
   const enabled = await isMiningEnabled();
 
   // return result
+<<<<<<< HEAD
   if (enabled === null) return new Response(`Mining enabled status not found`, { status: 404 });
   return new Response(JSON.stringify(enabled));
+=======
+  if (enabled === undefined) return createResponse(`Mining enabled status not found`, 404);
+  return createResponse(enabled);
+>>>>>>> 49f6024 (fix: use createResponse helper to generate resopnses)
 }
 
 // returns true if mining is enabled

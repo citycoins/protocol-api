@@ -1,20 +1,20 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { uintCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const cycle = requestUrl.searchParams.get('cycle');
-  if (!cycle) return new Response('Missing cycle parameter', { status: 400 });
+  if (!cycle) return createResponse('Missing cycle parameter', 400);
 
   // get result from contract
   const firstBlockInRewardCycle = await getFirstBlockInRewardCycle(cycle);
 
   // return result
-  if (!firstBlockInRewardCycle) return new Response(`Reward cycle not found: ${cycle}`, { status: 404 });
-  return new Response(JSON.stringify(firstBlockInRewardCycle));
+  if (!firstBlockInRewardCycle) return createResponse(`Reward cycle not found: ${cycle}`, 404);
+  return createResponse(firstBlockInRewardCycle);
 }
 
 // returns the first block in a given reward cycle

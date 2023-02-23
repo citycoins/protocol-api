@@ -1,20 +1,20 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { uintCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const cityId = requestUrl.searchParams.get('cityId');
-  if (!cityId) return new Response('Missing cityId parameter', { status: 400 });
+  if (!cityId) return createResponse('Missing cityId parameter', 400);
 
   // get result from contract
   const treasuryNonce = await getTreasuryNonce(cityId);
 
   // return result
-  if (!treasuryNonce) return new Response(`Treasury nonce not found: ${cityId}`, { status: 404 });
-  return new Response(JSON.stringify(treasuryNonce));
+  if (!treasuryNonce) return createResponse(`Treasury nonce not found: ${cityId}`, 404);
+  return createResponse(treasuryNonce);
 }
 
 async function getTreasuryNonce(cityId: string) {

@@ -1,20 +1,20 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { principalCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const who = requestUrl.searchParams.get('who');
-  if (!who) return new Response('Missing who parameter', { status: 400 });
+  if (!who) return createResponse('Missing who parameter', 400);
 
   // get result from contract
   const approver = await isApprover(who);
 
   // return result
-  if (approver === null) return new Response(`Approver not found: ${who}`, { status: 404 });
-  return new Response(JSON.stringify(approver));
+  if (approver === null) return createResponse(`Approver not found: ${who}`, 404);
+  return createResponse(approver);
 }
 
 // returns true or false if the principal is an approver
