@@ -1,24 +1,24 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { uintCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const cityId = requestUrl.searchParams.get('cityId');
-  if (!cityId) return new Response('Missing cityId parameter', { status: 400 });
+  if (!cityId) return createResponse('Missing cityId parameter', 400);
   const height = requestUrl.searchParams.get('height');
-  if (!height) return new Response('Missing height parameter', { status: 400 });
+  if (!height) return createResponse('Missing height parameter', 400);
   const userId = requestUrl.searchParams.get('userId');
-  if (!userId) return new Response('Missing userId parameter', { status: 400 });
+  if (!userId) return createResponse('Missing userId parameter', 400);
 
   // get result from contract
   const hasMined = await hasMinedAtBlock(cityId, height, userId);
 
   // return result
-  if (hasMined === null) return new Response(`Miner not found: ${cityId} ${height} ${userId}`, { status: 404 });
-  return new Response(JSON.stringify(hasMined));
+  if (hasMined === null) return createResponse(`Miner not found: ${cityId} ${height} ${userId}`, 404);
+  return createResponse(hasMined);
 }
 
 // returns true if the given user mined at the given block height
@@ -34,7 +34,7 @@ async function hasMinedAtBlock(cityId: string, height: string, userId: string) {
       },
       true
     );
-    return Boolean(result);
+    return typeof result === 'boolean' ? Boolean(result) : null;
   } catch (err) {
     return null;
   }

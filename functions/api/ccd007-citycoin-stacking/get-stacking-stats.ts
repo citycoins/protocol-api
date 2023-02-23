@@ -1,22 +1,22 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { uintCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK, StackingStats } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK, StackingStats } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const cityId = requestUrl.searchParams.get('cityId');
-  if (!cityId) return new Response('Missing cityId parameter', { status: 400 });
+  if (!cityId) return createResponse('Missing cityId parameter', 400);
   const cycle = requestUrl.searchParams.get('cycle');
-  if (!cycle) return new Response('Missing cycle parameter', { status: 400 });
+  if (!cycle) return createResponse('Missing cycle parameter', 400);
 
   // get result from contract
   const stackingStats = await getStackingStats(cityId, cycle);
 
   // return result
-  if (!stackingStats) return new Response(`Stacking stats not found: ${cityId} ${cycle}`, { status: 404 });
-  return new Response(JSON.stringify(stackingStats));
+  if (!stackingStats) return createResponse(`Stacking stats not found: ${cityId} ${cycle}`, 404);
+  return createResponse(stackingStats);
 }
 
 // returns the stacking stats for a given city and cycle

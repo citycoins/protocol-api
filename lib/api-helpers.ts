@@ -1,5 +1,30 @@
 import { StacksMainnet, StacksTestnet } from 'micro-stacks/network';
 
+// General
+
+// TODO: there has to be a better way to do this
+type ResponseType =
+  | string
+  | number
+  | boolean
+  | GetCityInfo
+  | ActivationDetails
+  | GetCoinbaseInfo
+  | CoinbaseThresholds
+  | CoinbaseAmounts
+  | CoinbaseDetails
+  | MiningStats
+  | Miner
+  | BlockWinner
+  | StackingStats
+  | Stacker;
+
+export const createResponse = (data: ResponseType, status = 200): Response => {
+  return new Response(typeof data === 'string' ? data : JSON.stringify(data), { status: status });
+};
+
+// Stacks
+
 export const NETWORK = (network: string) => {
   switch (network) {
     case 'mainnet':

@@ -1,5 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -7,8 +7,8 @@ export async function onRequest(context: any): Promise<Response> {
   const rewardCycleLength = await getRewardCycleLength();
 
   // return result
-  if (!rewardCycleLength) return new Response(`Reward cycle length not found`, { status: 404 });
-  return new Response(JSON.stringify(rewardCycleLength));
+  if (!rewardCycleLength) return createResponse(`Reward cycle length not found`, 404);
+  return createResponse(rewardCycleLength);
 }
 
 // returns the reward cycle length

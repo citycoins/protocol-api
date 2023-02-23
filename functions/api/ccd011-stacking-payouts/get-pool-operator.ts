@@ -1,5 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -7,8 +7,8 @@ export async function onRequest(context: any): Promise<Response> {
   const poolOperator = await getPoolOperator();
 
   // return result
-  if (!poolOperator) return new Response(`Pool operator not found`, { status: 404 });
-  return new Response(poolOperator);
+  if (!poolOperator) return createResponse(`Pool operator not found`, 404);
+  return createResponse(poolOperator);
 }
 
 // returns the pool operator

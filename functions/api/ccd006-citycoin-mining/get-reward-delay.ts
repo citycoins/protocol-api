@@ -1,5 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -7,8 +7,8 @@ export async function onRequest(context: any): Promise<Response> {
   const rewardDelay = await getRewardDelay();
 
   // return result
-  if (!rewardDelay) return new Response(`Reward delay not found`, { status: 404 });
-  return new Response(JSON.stringify(rewardDelay));
+  if (!rewardDelay) return createResponse(`Reward delay not found`, 404);
+  return createResponse(rewardDelay);
 }
 
 // returns the reward delay

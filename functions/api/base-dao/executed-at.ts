@@ -1,20 +1,20 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { principalCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
   const proposal = requestUrl.searchParams.get('proposal');
-  if (!proposal) return new Response('Missing proposal parameter', { status: 400 });
+  if (!proposal) return createResponse('Missing proposal parameter', 400);
 
   // get result from contract
   const executed = await executedAt(proposal);
 
   // return result
-  if (!executed) return new Response(`Proposal not found: ${proposal}`, { status: 404 });
-  return new Response(JSON.stringify(executed));
+  if (!executed) return createResponse(`Proposal not found: ${proposal}`, 404);
+  return createResponse(executed);
 }
 
 // returns the block height a proposal was executed at

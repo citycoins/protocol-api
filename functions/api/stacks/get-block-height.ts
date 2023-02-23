@@ -1,4 +1,5 @@
 import { CoreNodeInfoResponse } from '@stacks/stacks-blockchain-api-types';
+import { createResponse } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -7,13 +8,14 @@ export async function onRequest(context: any): Promise<Response> {
     url.pathname = '/v2/info';
     const response = await fetch(url.toString());
     if (!response.ok) {
-      return new Response('Error fetching block height, please try again', { status: 500 });
+      return null;
     }
     const responseJson: CoreNodeInfoResponse = await response.json();
     return Number(responseJson.stacks_tip_height);
   };
 
+  // TODO: look at this approach again
   const currentBlockHeight = await blockHeight();
-
-  return new Response(JSON.stringify(currentBlockHeight));
+  if (currentBlockHeight === null) return createResponse('Error fetching block height, please try again', 500);
+  return createResponse(currentBlockHeight);
 }

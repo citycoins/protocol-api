@@ -1,5 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(): Promise<Response> {
@@ -7,8 +7,8 @@ export async function onRequest(): Promise<Response> {
   const signalsRequired = await getSignalsRequired();
 
   // return result
-  if (!signalsRequired) return new Response('Error fetching signals required', { status: 500 });
-  return new Response(JSON.stringify(signalsRequired));
+  if (!signalsRequired) return createResponse('Signals required not found', 404);
+  return createResponse(signalsRequired);
 }
 
 // returns signals required in ccd001-direct-execute

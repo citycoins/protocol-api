@@ -1,5 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -7,8 +7,8 @@ export async function onRequest(context: any): Promise<Response> {
   const stackingEnabled = await isStackingEnabled();
 
   // return result
-  if (stackingEnabled === null) return new Response(`Stacking status not found`, { status: 404 });
-  return new Response(JSON.stringify(stackingEnabled));
+  if (stackingEnabled === null) return createResponse(`Stacking status not found`, 404);
+  return createResponse(stackingEnabled);
 }
 
 // returns true if stacking is enabled
@@ -24,7 +24,7 @@ async function isStackingEnabled() {
       },
       true
     );
-    return Boolean(result);
+    return typeof result === 'boolean' ? Boolean(result) : null;
   } catch (err) {
     return null;
   }
