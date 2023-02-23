@@ -6,25 +6,25 @@ import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 export async function onRequest(context: any): Promise<Response> {
   // check query parameters
   const requestUrl = new URL(context.request.url);
-  const userId = requestUrl.searchParams.get('userId');
-  if (!userId) return new Response('Missing userId parameter', { status: 400 });
+  const cityId = requestUrl.searchParams.get('cityId');
+  if (!cityId) return new Response('Missing cityId parameter', { status: 400 });
 
   // get result from contract
-  const user = await getUser(userId);
+  const cityName = await getCityName(cityId);
 
   // return result
-  if (!user) return new Response(`User not found: ${userId}`, { status: 404 });
-  return new Response(JSON.stringify(user));
+  if (!cityName) return new Response(`City name not found: ${cityId}`, { status: 404 });
+  return new Response(JSON.stringify(cityName));
 }
 
-async function getUser(userId: string): Promise<string | undefined> {
+async function getCityName(cityId: string): Promise<string | undefined> {
   try {
     const result = await fetchReadOnlyFunction(
       {
         contractAddress: DEPLOYER('mainnet'),
-        contractName: 'ccd003-user-registry',
-        functionName: 'get-user',
-        functionArgs: [uintCV(Number(userId))],
+        contractName: 'ccd004-city-registry',
+        functionName: 'get-city-name',
+        functionArgs: [uintCV(Number(cityId))],
         network: NETWORK('mainnet'),
       },
       true

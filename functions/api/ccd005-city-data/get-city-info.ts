@@ -19,12 +19,14 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(JSON.stringify(cityInfo));
 }
 
+// idea: match function name GetCityInfo
 interface CityInfo {
   activated: boolean;
   details: ActivationDetails;
   treasury: string;
 }
 
+// idea: type for each map, include CCD005?
 interface ActivationDetails {
   succededAt: number;
   delay: number;
