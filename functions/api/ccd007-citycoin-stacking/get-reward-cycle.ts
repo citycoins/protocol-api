@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the reward cycle for a given burn height
-async function getRewardCycle(burnHeight: string): Promise<number | undefined> {
+async function getRewardCycle(burnHeight: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

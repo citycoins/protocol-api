@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns true or false if the principal is an approver
-async function isApprover(who: string): Promise<boolean | undefined> {
+async function isApprover(who: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

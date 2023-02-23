@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns true or false if the contract is an active extension
-async function isExtension(proposal: string): Promise<boolean | undefined> {
+async function isExtension(proposal: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

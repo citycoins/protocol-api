@@ -12,7 +12,7 @@ export async function onRequest(): Promise<Response> {
 }
 
 // returns signals required in ccd001-direct-execute
-async function getSignalsRequired(): Promise<number | undefined> {
+async function getSignalsRequired() {
   try {
     const result = await fetchReadOnlyFunction(
       {

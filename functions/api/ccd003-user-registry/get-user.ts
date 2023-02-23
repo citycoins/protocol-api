@@ -17,7 +17,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(user);
 }
 
-async function getUser(userId: string): Promise<string | undefined> {
+async function getUser(userId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

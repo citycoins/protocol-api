@@ -19,7 +19,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(treasuryName);
 }
 
-async function getTreasuryName(cityId: string, treasuryId: string): Promise<string | undefined> {
+async function getTreasuryName(cityId: string, treasuryId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

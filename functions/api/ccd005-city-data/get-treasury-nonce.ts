@@ -17,7 +17,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(JSON.stringify(treasuryNonce));
 }
 
-async function getTreasuryNonce(cityId: string): Promise<number | undefined> {
+async function getTreasuryNonce(cityId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

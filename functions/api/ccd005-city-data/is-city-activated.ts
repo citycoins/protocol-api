@@ -16,7 +16,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(JSON.stringify(activated));
 }
 
-async function isCityActivated(cityId: string): Promise<boolean | undefined> {
+async function isCityActivated(cityId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

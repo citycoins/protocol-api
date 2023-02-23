@@ -22,7 +22,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the miner for a given city ID, block height, and user ID
-async function getMiner(cityId: string, height: string, userId: string): Promise<Miner | undefined> {
+async function getMiner(cityId: string, height: string, userId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

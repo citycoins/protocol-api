@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the number of signals for a proposal
-async function getSignals(proposal: string): Promise<number | undefined> {
+async function getSignals(proposal: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

@@ -17,7 +17,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(JSON.stringify(cityId));
 }
 
-async function getCityId(cityName: string): Promise<number | undefined> {
+async function getCityId(cityName: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

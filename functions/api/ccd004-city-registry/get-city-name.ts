@@ -17,7 +17,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(cityName);
 }
 
-async function getCityName(cityId: string): Promise<string | undefined> {
+async function getCityName(cityId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {

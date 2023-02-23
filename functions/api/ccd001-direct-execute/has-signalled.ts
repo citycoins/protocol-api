@@ -20,7 +20,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns if a given principal has signalled for a proposal
-async function hasSignalled(proposal: string, who: string): Promise<boolean | undefined> {
+async function hasSignalled(proposal: string, who: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
