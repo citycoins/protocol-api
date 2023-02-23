@@ -8,7 +8,7 @@ export async function onRequest(context: any): Promise<Response> {
 
   // return result
   if (!poolOperator) return new Response(`Pool operator not found`, { status: 404 });
-  return new Response(JSON.stringify(poolOperator));
+  return new Response(poolOperator);
 }
 
 // returns the pool operator
@@ -24,8 +24,8 @@ async function getPoolOperator() {
       },
       true
     );
-    return result ? String(result) : undefined;
+    return result ? String(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

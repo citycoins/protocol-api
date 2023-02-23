@@ -16,7 +16,7 @@ export async function onRequest(context: any): Promise<Response> {
 
   // return result
   if (!treasuryAddress) return new Response(`Treasury address not found: ${cityId} ${treasuryName}`, { status: 404 });
-  return new Response(JSON.stringify(treasuryAddress));
+  return new Response(treasuryAddress);
 }
 
 // returns the treasury address for a given city ID and treasury name
@@ -32,8 +32,8 @@ async function getTreasuryByName(cityId: number, treasuryName: string) {
       },
       true
     );
-    return result ? String(result) : undefined;
+    return result ? String(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

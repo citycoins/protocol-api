@@ -13,11 +13,12 @@ export async function onRequest(context: any): Promise<Response> {
   const approver = await isApprover(who);
 
   // return result
+  if (approver === null) return new Response(`Approver not found: ${who}`, { status: 404 });
   return new Response(JSON.stringify(approver));
 }
 
 // returns true or false if the principal is an approver
-async function isApprover(who: string): Promise<boolean | undefined> {
+async function isApprover(who: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -31,6 +32,6 @@ async function isApprover(who: string): Promise<boolean | undefined> {
     );
     return Boolean(result);
   } catch (err) {
-    return false;
+    return null;
   }
 }

@@ -15,11 +15,12 @@ export async function onRequest(context: any): Promise<Response> {
   const signalled = await hasSignalled(proposal, who);
 
   // return result
+  if (signalled === null) return new Response(`Proposal not found: ${proposal}`, { status: 404 });
   return new Response(JSON.stringify(signalled));
 }
 
 // returns if a given principal has signalled for a proposal
-async function hasSignalled(proposal: string, who: string): Promise<boolean | undefined> {
+async function hasSignalled(proposal: string, who: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -33,6 +34,6 @@ async function hasSignalled(proposal: string, who: string): Promise<boolean | un
     );
     return Boolean(result);
   } catch (err) {
-    return false;
+    return null;
   }
 }

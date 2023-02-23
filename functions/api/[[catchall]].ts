@@ -9,14 +9,13 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(
     JSON.stringify(
       {
-        catchall: true,
         functionPath: context.functionPath,
         requestPath: requestPath,
         requestParams: requestParams,
+        message: `Welcome to the CityCoins API! Endpoints match the DAO contract names and function definitions. More info in the project readme: https://github.com/citycoins/protocol-api`,
       },
       null,
       2
-    ),
-    { status: 404 }
+    )
   );
 }

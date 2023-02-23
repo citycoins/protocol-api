@@ -7,7 +7,7 @@ export async function onRequest(context: any): Promise<Response> {
   const enabled = await isMiningEnabled();
 
   // return result
-  if (enabled === undefined) return new Response(`Mining enabled status not found`, { status: 404 });
+  if (enabled === null) return new Response(`Mining enabled status not found`, { status: 404 });
   return new Response(JSON.stringify(enabled));
 }
 
@@ -26,6 +26,6 @@ async function isMiningEnabled() {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

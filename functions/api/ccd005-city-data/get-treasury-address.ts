@@ -20,7 +20,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the treasury address for a given city ID and treasury ID
-async function getTreasuryAddress(cityId: string, treasuryId: string): Promise<string | undefined> {
+async function getTreasuryAddress(cityId: string, treasuryId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -32,8 +32,8 @@ async function getTreasuryAddress(cityId: string, treasuryId: string): Promise<s
       },
       true
     );
-    return result ? String(result) : undefined;
+    return result ? Number(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

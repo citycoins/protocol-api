@@ -35,6 +35,6 @@ async function getStackingReward(cityId: string, userId: string, cycle: string) 
     );
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

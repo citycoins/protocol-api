@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the coinbase info for a given city ID
-async function getCoinbaseInfo(cityId: string): Promise<GetCoinbaseInfo | undefined> {
+async function getCoinbaseInfo(cityId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -32,6 +32,6 @@ async function getCoinbaseInfo(cityId: string): Promise<GetCoinbaseInfo | undefi
     );
     return result as GetCoinbaseInfo;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

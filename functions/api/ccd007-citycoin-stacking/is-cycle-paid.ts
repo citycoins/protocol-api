@@ -15,7 +15,7 @@ export async function onRequest(context: any): Promise<Response> {
   const paid = await isCyclePaid(cityId, cycle);
 
   // return result
-  if (paid === undefined) return new Response(`Cycle payout information not found: ${cityId} ${cycle}`, { status: 404 });
+  if (paid === null) return new Response(`Cycle payout information not found: ${cityId} ${cycle}`, { status: 404 });
   return new Response(JSON.stringify(paid));
 }
 
@@ -34,6 +34,6 @@ async function isCyclePaid(cityId: string, cycle: string) {
     );
     return Boolean(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

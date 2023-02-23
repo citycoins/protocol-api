@@ -14,10 +14,10 @@ export async function onRequest(context: any): Promise<Response> {
 
   // return result
   if (!user) return new Response(`User not found: ${userId}`, { status: 404 });
-  return new Response(JSON.stringify(user));
+  return new Response(user);
 }
 
-async function getUser(userId: string): Promise<string | undefined> {
+async function getUser(userId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -29,8 +29,8 @@ async function getUser(userId: string): Promise<string | undefined> {
       },
       true
     );
-    return result ? String(result) : undefined;
+    return result ? String(result) : null;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

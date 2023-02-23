@@ -34,6 +34,6 @@ async function getStackingStats(cityId: string, cycle: string) {
     );
     return result as StackingStats;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

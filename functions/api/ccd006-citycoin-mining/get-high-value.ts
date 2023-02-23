@@ -20,7 +20,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the high value for a given city ID and block height
-async function getHighValue(cityId: string, height: string): Promise<number | undefined> {
+async function getHighValue(cityId: string, height: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -34,6 +34,6 @@ async function getHighValue(cityId: string, height: string): Promise<number | un
     );
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

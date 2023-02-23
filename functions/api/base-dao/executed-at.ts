@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the block height a proposal was executed at
-async function executedAt(proposal: string): Promise<number | undefined> {
+async function executedAt(proposal: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -32,6 +32,6 @@ async function executedAt(proposal: string): Promise<number | undefined> {
     );
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

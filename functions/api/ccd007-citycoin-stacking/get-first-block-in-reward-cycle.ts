@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the first block in a given reward cycle
-async function getFirstBlockInRewardCycle(cycle: string): Promise<number | undefined> {
+async function getFirstBlockInRewardCycle(cycle: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -32,6 +32,6 @@ async function getFirstBlockInRewardCycle(cycle: string): Promise<number | undef
     );
     return Number(result);
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

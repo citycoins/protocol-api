@@ -34,6 +34,6 @@ async function getMiningStats(cityId: string, height: string) {
     );
     return result as MiningStats;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }

@@ -18,7 +18,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the activation detials for a given city id
-async function getActivationDetails(cityId: string): Promise<ActivationDetails | undefined> {
+async function getActivationDetails(cityId: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -32,6 +32,6 @@ async function getActivationDetails(cityId: string): Promise<ActivationDetails |
     );
     return result as ActivationDetails;
   } catch (err) {
-    return undefined;
+    return null;
   }
 }
