@@ -16,7 +16,7 @@ export async function onRequest(context: any): Promise<Response> {
 
   // return result
   if (!treasuryName) return new Response(`Treasury name not found: ${cityId} ${treasuryId}`, { status: 404 });
-  return new Response('Not implemented, coming soon!', { status: 501 });
+  return new Response(treasuryName);
 }
 
 async function getTreasuryName(cityId: string, treasuryId: string): Promise<string | undefined> {

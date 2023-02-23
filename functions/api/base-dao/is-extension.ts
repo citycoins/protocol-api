@@ -13,6 +13,7 @@ export async function onRequest(context: any): Promise<Response> {
   const extension = await isExtension(proposal);
 
   // return result
+  if (extension === undefined) return new Response(`Extension not found: ${proposal}`, { status: 404 });
   return new Response(JSON.stringify(extension));
 }
 
@@ -31,6 +32,6 @@ async function isExtension(proposal: string): Promise<boolean | undefined> {
     );
     return Boolean(result);
   } catch (err) {
-    return false;
+    return undefined;
   }
 }

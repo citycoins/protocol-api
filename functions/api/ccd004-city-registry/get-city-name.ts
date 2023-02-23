@@ -14,7 +14,7 @@ export async function onRequest(context: any): Promise<Response> {
 
   // return result
   if (!cityName) return new Response(`City name not found: ${cityId}`, { status: 404 });
-  return new Response(JSON.stringify(cityName));
+  return new Response(cityName);
 }
 
 async function getCityName(cityId: string): Promise<string | undefined> {

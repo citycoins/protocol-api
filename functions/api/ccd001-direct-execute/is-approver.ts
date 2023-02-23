@@ -13,6 +13,7 @@ export async function onRequest(context: any): Promise<Response> {
   const approver = await isApprover(who);
 
   // return result
+  if (approver === undefined) return new Response(`Approver not found: ${who}`, { status: 404 });
   return new Response(JSON.stringify(approver));
 }
 
@@ -31,6 +32,6 @@ async function isApprover(who: string): Promise<boolean | undefined> {
     );
     return Boolean(result);
   } catch (err) {
-    return false;
+    return undefined;
   }
 }

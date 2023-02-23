@@ -17,7 +17,7 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(JSON.stringify(userId));
 }
 
-async function getUserId(user: string): Promise<string | undefined> {
+async function getUserId(user: string): Promise<number | undefined> {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -29,7 +29,7 @@ async function getUserId(user: string): Promise<string | undefined> {
       },
       true
     );
-    return result ? String(result) : undefined;
+    return result ? Number(result) : undefined;
   } catch (err) {
     return undefined;
   }

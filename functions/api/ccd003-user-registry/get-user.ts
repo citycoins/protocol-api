@@ -14,7 +14,7 @@ export async function onRequest(context: any): Promise<Response> {
 
   // return result
   if (!user) return new Response(`User not found: ${userId}`, { status: 404 });
-  return new Response(JSON.stringify(user));
+  return new Response(user);
 }
 
 async function getUser(userId: string): Promise<string | undefined> {

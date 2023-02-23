@@ -15,7 +15,7 @@ export async function onRequest(context: any): Promise<Response> {
   const blockWinner = await getBlockWinner(cityId, height);
 
   // return result
-  if (!blockWinner) return new Response(`Block winner not found: ${cityId} ${height}`, { status: 404 });
+  if (blockWinner === undefined) return new Response(`Block winner not found: ${cityId} ${height}`, { status: 404 });
   return new Response(JSON.stringify(blockWinner));
 }
 
