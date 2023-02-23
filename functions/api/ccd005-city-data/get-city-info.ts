@@ -1,6 +1,6 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { stringAsciiCV, uintCV } from 'micro-stacks/clarity';
-import { DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { DEPLOYER, GetCityInfo, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
@@ -19,23 +19,8 @@ export async function onRequest(context: any): Promise<Response> {
   return new Response(JSON.stringify(cityInfo));
 }
 
-// idea: match function name GetCityInfo
-interface CityInfo {
-  activated: boolean;
-  details: ActivationDetails;
-  treasury: string;
-}
-
-// idea: type for each map, include CCD005?
-interface ActivationDetails {
-  succededAt: number;
-  delay: number;
-  activatedAt: number;
-  threshold: number;
-}
-
 // returns the city info for a given city ID and treasury name
-async function getCityInfo(cityId: string, treasuryName: string): Promise<CityInfo | undefined> {
+async function getCityInfo(cityId: string, treasuryName: string): Promise<GetCityInfo | undefined> {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -47,7 +32,7 @@ async function getCityInfo(cityId: string, treasuryName: string): Promise<CityIn
       },
       true
     );
-    return result as CityInfo;
+    return result as GetCityInfo;
   } catch (err) {
     return undefined;
   }
