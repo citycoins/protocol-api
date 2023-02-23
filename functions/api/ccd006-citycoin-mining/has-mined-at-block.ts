@@ -34,7 +34,7 @@ async function hasMinedAtBlock(cityId: string, height: string, userId: string) {
       },
       true
     );
-    return Boolean(result);
+    return typeof result === 'boolean' ? Boolean(result) : null;
   } catch (err) {
     return null;
   }

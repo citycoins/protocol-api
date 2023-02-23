@@ -32,7 +32,7 @@ async function isAllowed(contractName: string, assetContract: string) {
       },
       true
     );
-    return Boolean(result);
+    return typeof result === 'boolean' ? Boolean(result) : null;
   } catch (err) {
     return null;
   }

@@ -1,4 +1,5 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
+import { uintCV } from 'micro-stacks/clarity';
 import { createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
@@ -23,12 +24,12 @@ async function isCityActivated(cityId: string) {
         contractAddress: DEPLOYER('mainnet'),
         contractName: 'ccd005-city-data',
         functionName: 'is-city-activated',
-        functionArgs: [],
+        functionArgs: [uintCV(Number(cityId))],
         network: NETWORK('mainnet'),
       },
       true
     );
-    return Boolean(result);
+    return typeof result === 'boolean' ? Boolean(result) : null;
   } catch (err) {
     return null;
   }
