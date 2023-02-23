@@ -65,3 +65,23 @@ export interface CoinbaseDetails {
   bonus: number;
   epoch: number;
 }
+
+// CCD006 Citycoin Mining
+
+export interface Miner {
+  commit: number;
+  low: number;
+  high: number;
+  winner: boolean;
+}
+
+export interface MiningStats {
+  miners: number;
+  amount: number;
+  claimed: boolean;
+}
+
+export interface BlockWinner {
+  winner: boolean;
+  claimed: boolean;
+}
