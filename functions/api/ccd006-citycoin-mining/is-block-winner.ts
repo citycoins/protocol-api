@@ -1,6 +1,6 @@
 import { fetchReadOnlyFunction } from 'micro-stacks/api';
 import { principalCV, uintCV } from 'micro-stacks/clarity';
-import { BlockWinner, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
+import { BlockWinner, createResponse, DEPLOYER, NETWORK } from '../../../lib/api-helpers';
 
 // TODO: upgrade types and check if EventContext is found
 export async function onRequest(context: any): Promise<Response> {
