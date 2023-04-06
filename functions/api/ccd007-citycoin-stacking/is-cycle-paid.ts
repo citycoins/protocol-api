@@ -10,9 +10,10 @@ export async function onRequest(context: any): Promise<Response> {
   if (!cityId) return createResponse('Missing cityId parameter', 400);
   const cycle = requestUrl.searchParams.get('cycle');
   if (!cycle) return createResponse('Missing cycle parameter', 400);
+  const tip = requestUrl.searchParams.get('tip');
 
   // get result from contract
-  const paid = await isCyclePaid(cityId, cycle);
+  const paid = await isCyclePaid(cityId, cycle, tip ? tip : undefined);
 
   // return result
   if (paid === null) return createResponse(`Cycle payout information not found: ${cityId} ${cycle}`, 404);
@@ -20,7 +21,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns true if the cycle is paid
-async function isCyclePaid(cityId: string, cycle: string) {
+async function isCyclePaid(cityId: string, cycle: string, tip?: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -29,6 +30,7 @@ async function isCyclePaid(cityId: string, cycle: string) {
         functionName: 'is-cycle-paid',
         functionArgs: [uintCV(Number(cityId)), uintCV(Number(cycle))],
         network: NETWORK('mainnet'),
+        tip: tip,
       },
       true
     );
