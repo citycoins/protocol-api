@@ -12,9 +12,10 @@ export async function onRequest(context: any): Promise<Response> {
   if (!cycle) return createResponse('Missing cycle parameter', 400);
   const userId = requestUrl.searchParams.get('userId');
   if (!userId) return createResponse('Missing userId parameter', 400);
+  const tip = requestUrl.searchParams.get('tip');
 
   // get result from contract
-  const stacker = await getStacker(cityId, cycle, userId);
+  const stacker = await getStacker(cityId, cycle, userId, tip ? tip : undefined);
 
   // return result
   if (!stacker) return createResponse(`Stacker not found: ${cityId} ${cycle} ${userId}`, 404);
@@ -22,7 +23,7 @@ export async function onRequest(context: any): Promise<Response> {
 }
 
 // returns the stacker for a given cityId, cycle, and userId
-async function getStacker(cityId: string, cycle: string, userId: string) {
+async function getStacker(cityId: string, cycle: string, userId: string, tip?: string) {
   try {
     const result = await fetchReadOnlyFunction(
       {
@@ -31,6 +32,7 @@ async function getStacker(cityId: string, cycle: string, userId: string) {
         functionName: 'get-stacker',
         functionArgs: [uintCV(Number(cityId)), uintCV(Number(cycle)), uintCV(Number(userId))],
         network: NETWORK('mainnet'),
+        tip: tip,
       },
       true
     );
